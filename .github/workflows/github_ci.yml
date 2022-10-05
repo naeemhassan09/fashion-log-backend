@@ -24,7 +24,7 @@ jobs:
           npm config set @development-team20:registry=https://gitlab.com/api/v4/packages/npm/
           npm config set '//gitlab.com/api/v4/packages/npm/:_authToken=glpat-q_GPfEwGk-Yy-NWBJPQz'
           npm config set '//gitlab.com/api/v4/projects/:_authToken=glpat-q_GPfEwGk-Yy-NWBJPQz'
-          npm install
+          yarn install
       - name: ES Lint
         run: yarn lint
       - name: Build code
