@@ -1,0 +1,37 @@
+
+name: lint-checker
+on: push
+env:
+  GL_NPM_TOKEN: ${{ secrets.GL_NPM_TOKEN }}
+jobs:
+  CI-Pipeline:
+    name: CI Pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache NPM dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache-
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Init
+        run: |
+          GL_NPM_TOKEN=glpat-q_GPfEwGk-Yy-NWBJPQz
+          npm config set @development-team20:registry=https://gitlab.com/api/v4/packages/npm/
+          npm config set '//gitlab.com/api/v4/packages/npm/:_authToken=glpat-q_GPfEwGk-Yy-NWBJPQz'
+          npm config set '//gitlab.com/api/v4/projects/:_authToken=glpat-q_GPfEwGk-Yy-NWBJPQz'
+          npm install
+      - name: ES Lint
+        run: yarn lint
+      - name: Build code
+        run: |
+          yarn run build
+      - name: Tests code
+        run: |
+          cp .env.template .env
+          echo "TODO test stage is activated."
+          echo "no tests found."
