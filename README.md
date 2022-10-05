@@ -1,26 +1,14 @@
-# [NestJs](https://github.com/nestjs/nest) boiler-plate repository
+# Pricing Engine Backend Repository
 
 ## Features
 
-> This repository could be used as a base repo for all our internal new projects. This codebase has the implementation of following features:
-- JWT
-- RBAC Implementation (User and Admin roles are supported. Extended to multiple roles)
-- Swagger based API
-- Added Support for Migration (This boilerplate is based on TypeORM and MySQL)
-- Winston based Logger implementation ( log rotation is also added)
-- Husky for running the pre, post-commit hooks (Running prettier and linting)
-- PM2 based prod deployment
-- The boilerplate repo is Dockerized. Though it's not properly, It could be optimized further.
-- Directory structure has following modules
-  - User
-  - Authentication (Responsible for JWT Authentication & Generating JWT token. (Refresh token functionality could be added at later stages if required.))
-  - Core (This module will have common services/decorators/config
-  - Shared (We create it to define common components DTOs, utils, exceptions used across the App)
+> This project will be used to handle all pricing related data:
+- Dynamic Pricing of SKU
 
 ## Installation
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 ## Getting started
@@ -43,13 +31,13 @@ What things you need to install the software and how to install them :
 1. Clone the git repository
 
    ```bash
-   git clone https://gitlab.com/development-team20/nestjs-boilerplate
+   git clone https://github.com/retailotech/pricing-engine-backend.git
    ```
 
 1. Go into the project directory
 
    ```bash
-   cd nest-boilerplate/
+   cd pricing-engine-backend/
    ```
 
 1. Checkout working branch
@@ -78,7 +66,6 @@ What things you need to install the software and how to install them :
    docker-compose up -d --build
    ```
 
-1. Access the API documentation http://localhost:3000/api/v1/api-docs/#/ to check if everything is up and running.
 
 ---
 

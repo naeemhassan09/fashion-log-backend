@@ -3,17 +3,35 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { ValidationError } from 'class-validator';
 import * as helmet from 'helmet';
+import * as Sentry from '@sentry/node';
 import { CONSTANTS } from './app.constants';
 import { AppModule } from './app.module';
 import { RequestIdMiddleware } from './core';
 import { setupLogger } from './logger';
 import { ValidationFailedException } from './shared';
 import { setupSwagger } from './swagger';
+import sentryConfig from './core/config/sentry';
+require('newrelic');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const SentryTracing = require('@sentry/tracing');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: setupLogger(),
   });
+
+  Sentry.init({
+    ...sentryConfig,
+    integrations: [
+      new Sentry.Integrations.Http({ tracing: true }),
+      new SentryTracing.Integrations.Express({ app }),
+      new SentryTracing.Integrations.Mysql(),
+    ],
+  });
+
+  app.use(Sentry.Handlers.requestHandler());
+  app.use(Sentry.Handlers.tracingHandler());
+  app.use(Sentry.Handlers.errorHandler());
 
   app.setGlobalPrefix(CONSTANTS.API_VERSION);
 
