@@ -4,12 +4,12 @@ import { ROLE } from '../shared';
 import { Public, Roles } from '../core';
 
 @Controller('health')
-// @Public()
+@Public()
 export class HealthController {
   constructor(private readonly health: HealthCheckService) {}
 
   @Get()
-  @Roles(ROLE.ADMIN)
+  @Roles(ROLE.USER)
   @HealthCheck()
   check() {
     return this.health.check([]);
