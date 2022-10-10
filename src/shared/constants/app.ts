@@ -1,4 +1,4 @@
-export const BASE_ROUTE = 'pricing/api/v1/';
+export const BASE_ROUTE = '/pricing-engine/api/v1/';
 
 export const SERVER = {
   DEV_SERVER: process.env.DEV_SERVER || 'https://dev.retailo.me',

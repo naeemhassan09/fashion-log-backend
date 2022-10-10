@@ -4,6 +4,7 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationError } from 'class-validator';
 import * as helmet from 'helmet';
 import * as Sentry from '@sentry/node';
+import { BASE_ROUTE } from './shared/constants';
 import { CONSTANTS } from './app.constants';
 import { AppModule } from './app.module';
 import { RequestIdMiddleware } from './core';
@@ -33,7 +34,7 @@ async function bootstrap() {
   app.use(Sentry.Handlers.tracingHandler());
   app.use(Sentry.Handlers.errorHandler());
 
-  app.setGlobalPrefix(CONSTANTS.API_VERSION);
+  app.setGlobalPrefix(BASE_ROUTE);
 
   const configService = app.get(ConfigService);
   const environment = configService.get<string>('NODE_ENV');
