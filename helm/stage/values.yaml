@@ -1,0 +1,77 @@
+# Default values for chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: 833896303910.dkr.ecr.me-south-1.amazonaws.com/pricing-engine
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+  container_port: 9001
+
+nameOverride: "pricing-engine-app"
+fullnameOverride: "pricing-engine"
+environment: "Stage"
+
+command: ["/bin/sh"]
+args:
+  - "-c"
+  - "yarn run migration:run; yarn run start:prod"
+
+healthCheckPath: "/pricing-engine/api/v1/"
+
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+
+service:
+  type: ClusterIP
+  port: 9001
+
+ingress:
+  enabled: true
+  className: "alb"
+  annotations: 
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: retailo-stage
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:me-south-1:833896303910:certificate/f1cade01-cc7a-4465-8d04-0898ade03742
+    alb.ingress.kubernetes.io/healthcheck-path: /pricing-engine/api/v1/
+  hosts:
+    - host: 
+      paths:
+        - path: /pricing-engine
+          pathType: Prefix
+initalDelaySeconds: 10
+
+resources: 
+  limits:
+    cpu: 250m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
