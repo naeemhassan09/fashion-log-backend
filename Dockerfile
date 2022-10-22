@@ -2,7 +2,7 @@
 FROM node:16.13.0-alpine
 
 
-LABEL org.opencontainers.image.authors="Muhammad Adeel <muhammad.adeel@retailo.co>"
+LABEL org.opencontainers.image.authors="Naeem <naeemhassan09@gmail.com>"
 
 RUN apk --no-cache --update add dumb-init vim nano bash git curl && \
     rm -rf /var/cache/apk/* /tmp && \

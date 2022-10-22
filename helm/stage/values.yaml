@@ -5,14 +5,14 @@
 replicaCount: 1
 
 image:
-  repository: 833896303910.dkr.ecr.me-south-1.amazonaws.com/pricing-engine
+  repository: 833896303910.dkr.ecr.me-south-1.amazonaws.com/fashionlog
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
   container_port: 9001
 
-nameOverride: "pricing-engine-app"
-fullnameOverride: "pricing-engine"
+nameOverride: "fashionlog-app"
+fullnameOverride: "fashionlog"
 environment: "Stage"
 
 command: ["/bin/sh"]
@@ -20,7 +20,7 @@ args:
   - "-c"
   - "yarn run migration:run; yarn run start:prod"
 
-healthCheckPath: "/pricing-engine/api/v1/"
+healthCheckPath: "/fashionlog/api/v1/"
 
 
 serviceAccount:
@@ -45,13 +45,13 @@ ingress:
   annotations: 
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/group.name: retailo-stage
+    alb.ingress.kubernetes.io/group.name: fashionlog-stage
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:me-south-1:833896303910:certificate/f1cade01-cc7a-4465-8d04-0898ade03742
-    alb.ingress.kubernetes.io/healthcheck-path: /pricing-engine/api/v1/
+    alb.ingress.kubernetes.io/healthcheck-path: /fashionlog/api/v1/
   hosts:
     - host: 
       paths:
-        - path: /pricing-engine
+        - path: /fashionlog
           pathType: Prefix
 initalDelaySeconds: 10
 

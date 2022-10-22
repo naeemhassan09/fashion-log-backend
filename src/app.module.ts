@@ -1,12 +1,25 @@
 import { Module } from '@nestjs/common';
 import { APP_GUARD, RouterModule } from '@nestjs/core';
 import { appRoutes } from './app.routes';
+import { CityModule } from './city/city.module';
 import { CoreModule, RolesGuard } from './core';
+import { CountryModule } from './country/country.module';
+import { FeaturesModule } from './features/features.module';
 import { HealthModule } from './health/health.module';
 import { SharedModule } from './shared';
+import { StateModule } from './state/state.module';
 
 @Module({
-  imports: [RouterModule.register(appRoutes), CoreModule, SharedModule, HealthModule],
+  imports: [
+    RouterModule.register(appRoutes),
+    CoreModule,
+    SharedModule,
+    HealthModule,
+    FeaturesModule,
+    CountryModule,
+    StateModule,
+    CityModule,
+  ],
   controllers: [],
   providers: [{ provide: APP_GUARD, useClass: RolesGuard }],
 })

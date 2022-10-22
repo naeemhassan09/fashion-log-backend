@@ -31,13 +31,13 @@ What things you need to install the software and how to install them :
 1. Clone the git repository
 
    ```bash
-   git clone https://github.com/retailotech/pricing-engine-backend.git
+   git clone https://github.com/fashionlogtech/fashionlog-backend.git
    ```
 
 1. Go into the project directory
 
    ```bash
-   cd pricing-engine-backend/
+   cd fashionlog-backend/
    ```
 
 1. Checkout working branch

@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: process.env.NEW_RELIC_APP_NAME || 'pricing-engine-backend',
+  app_name: process.env.NEW_RELIC_APP_NAME || 'fashionlog-backend',
   /**
    * Your New Relic license key.
    */
