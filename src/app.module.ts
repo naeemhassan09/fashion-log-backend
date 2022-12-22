@@ -8,6 +8,7 @@ import { FeaturesModule } from './features/features.module';
 import { HealthModule } from './health/health.module';
 import { SharedModule } from './shared';
 import { StateModule } from './state/state.module';
+import { CompanyModule } from './company/company.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { StateModule } from './state/state.module';
     CountryModule,
     StateModule,
     CityModule,
+    CompanyModule,
   ],
   controllers: [],
   providers: [{ provide: APP_GUARD, useClass: RolesGuard }],
