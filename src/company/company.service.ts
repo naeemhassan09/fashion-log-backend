@@ -15,18 +15,18 @@ export class CompanyService {
   }
 
   findAll() {
-    return `This action returns all company`;
+    return this.companyRepository.findAllCompanies();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} company`;
+    return this.companyRepository.findOne(id);
   }
 
   update(id: number, updateCompanyDto: UpdateCompanyDto) {
-    return `This action updates a #${id} company`;
+    return this.companyRepository.updateCompany(id, updateCompanyDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} company`;
+    return this.companyRepository.deleteCompany(id);
   }
 }
