@@ -23,6 +23,6 @@ import { CompanyModule } from './company/company.module';
     CompanyModule,
   ],
   controllers: [],
-  providers: [{ provide: APP_GUARD, useClass: RolesGuard }],
+  // providers: [{ provide: APP_GUARD, useClass: RolesGuard }],
 })
 export class AppModule {}
