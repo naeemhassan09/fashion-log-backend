@@ -89,3 +89,11 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## Migration
+
+# create a migration
+``` yarn run migration:create companyMigration  ```
+# generate a migration
+```yarn  migration:generate  companyMigration  ```
+# run a migration
+```yarn run migration:run  ```                       

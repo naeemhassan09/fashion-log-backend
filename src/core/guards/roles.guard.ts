@@ -9,6 +9,7 @@ export class RolesGuard implements CanActivate {
 
   public canActivate(context: ExecutionContext): boolean {
     const isPublic = this.reflector.getAllAndOverride<boolean>('isPublic', [context.getHandler(), context.getClass()]);
+    console.log('🚀 ~ file: roles.guard.ts:12 ~ RolesGuard ~ canActivate ~ isPublic', isPublic);
 
     if (isPublic) {
       return true;
