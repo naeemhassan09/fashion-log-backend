@@ -2,26 +2,31 @@ import { Expose } from 'class-transformer';
 import {
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-  VersionColumn
+  VersionColumn,
 } from 'typeorm';
 
 export abstract class BaseEntity {
-  @Expose()
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Expose()
-  @Column({ update: false })
   @CreateDateColumn()
-  createdAt;
+  createdAt!: Date;
 
-  @Expose()
   @UpdateDateColumn()
-  updatedAt;
+  updatedAt!: Date;
 
-  @Expose()
-  @VersionColumn()
-  version;
+  @DeleteDateColumn()
+  deletedAt!: Date;
+
+  @Column({ nullable: true })
+  createdBy: string;
+
+  @Column({ nullable: true })
+  updatedBy: string;
+
+  @Column({ nullable: true })
+  deletedBy: string;
 }
