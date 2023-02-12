@@ -1,3 +1,4 @@
+import { BaseEntity } from 'src/core/entity/base.entity';
 import {
   Column,
   Entity,
@@ -9,10 +10,7 @@ import {
 } from 'typeorm';
 
 @Entity('company')
-export class Company {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class Company extends BaseEntity {
   @Column({ nullable: false })
   name: string;
 
@@ -24,22 +22,4 @@ export class Company {
 
   @Column({ nullable: false })
   email: string;
-
-  @CreateDateColumn()
-  createdAt!: Date;
-
-  @UpdateDateColumn()
-  updatedAt!: Date;
-
-  @DeleteDateColumn()
-  deletedAt!: Date;
-
-  @Column({ nullable: true })
-  createdBy: string;
-
-  @Column({ nullable: true })
-  updatedBy: string;
-
-  @Column({ nullable: true })
-  deletedBy: string;
 }
