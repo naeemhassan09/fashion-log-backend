@@ -1,8 +1,3 @@
-const GET_PRODUCT_PRICE = {
-  summary: 'Get the price of product with respect to the pricing rule',
-  description: '',
-};
-
 const POST_FEATURE_CREATE = {
   summary: 'Create a new feature',
   description: '',
@@ -27,4 +22,4 @@ const DELETE_A_FEATURE = {
   description: '',
 };
 
-export { GET_PRODUCT_PRICE, POST_FEATURE_CREATE, PATCH_FEATURE_UPDATE, GET_A_FEATURE, DELETE_A_FEATURE, GET_FEATURES };
+export { POST_FEATURE_CREATE, PATCH_FEATURE_UPDATE, GET_A_FEATURE, DELETE_A_FEATURE, GET_FEATURES };

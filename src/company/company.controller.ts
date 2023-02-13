@@ -3,8 +3,9 @@ import { CompanyService } from './company.service';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
 import { Public } from 'src/core/decorators';
-
+import { SwaggerController, SwaggerSuccessResponse } from '../swagger/decorators';
 @Public()
+@SwaggerController('Companies')
 @Controller('company')
 export class CompanyController {
   constructor(private readonly companyService: CompanyService) {}
