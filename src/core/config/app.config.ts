@@ -12,8 +12,9 @@ export default (): any => ({
     password: process.env.DB_PASSWORD,
   },
 
+  appSecret: process.env.APP_SECRET,
   jwt: {
-    secretKey: process.env.JWT_SECRET_KEY,
+    secretOrKey: process.env.JWT_SECRET_KEY,
     accessTokenExpiresInSec: parseInt(process.env.JWT_ACCESS_TOKEN_EXPIRY_IN_SEC, 10),
   },
 });

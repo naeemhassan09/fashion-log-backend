@@ -10,6 +10,7 @@ import { SharedModule } from './shared';
 import { StateModule } from './state/state.module';
 import { CompanyModule } from './company/company.module';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { UserModule } from './user/user.module';
     CityModule,
     CompanyModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   // providers: [{ provide: APP_GUARD, useClass: RolesGuard }],

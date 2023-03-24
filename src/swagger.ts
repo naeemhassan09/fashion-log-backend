@@ -4,7 +4,7 @@ import { SERVER, BASE_ROUTE } from './shared/constants';
 
 export function setupSwagger(app: INestApplication): void {
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('Pricing Engine Backend APIs')
+    .setTitle('Fashion Log Backend APIs')
     .setDescription('This is the API documentation for Pricing Engine')
     .setVersion('1.0')
     .addSecurity('Authorization', {
